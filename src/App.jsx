@@ -30,11 +30,9 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper
 } from '@chakra-ui/react';
-import FileUpload from "./components/FileUpload.jsx"
 import Footer from "./components/Footer.jsx"
 import Favicon from './assets/images/favicon.png';
 import axios from 'axios';
-import { createTx } from 'taproot-sdk';
 
 const web3Modal = new Web3Modal({
   projectId: '5a9fd92ce23a58d83e5f881d1a8ef28c',
@@ -160,7 +158,7 @@ function App() {
   }
 
   const checkWhitelist = async (key) => {
-    let result = await axios.get('http://localhost:8787/whitelisted/'+key);
+    let result = await axios.get('/api/whitelist/'+key);
     let whitelisted = result.data ? JSON.parse(result.data) : false;
     console.log(whitelisted, whitelisted ? 'User is whitelisted' : 'Not whitelisted');
     setWhitelisted(whitelisted);

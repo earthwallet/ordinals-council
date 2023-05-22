@@ -19,7 +19,7 @@ router.get('/drops', async (request) => {
 router.post('/drops', async (request) => {
 	// Validate app check token exists
 	let { params } = request;
-    if (!request.auth == 'sdfgn8a2437gn283n8g1239gh1239g8h1289gAVBN@I#NAV#Va23u') {
+    if (!request.auth == process.env.AUTH_KEY) {
         return new Response(false);
     }
 
